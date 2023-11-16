@@ -1,29 +1,23 @@
-# installation-guide
+# Guia de Instalação
 
-### MinGW
-mingw-get-setup.exe
-check `mingw32-base` and `mingw32-gcc-g++`
-installation
-apply changes
-variaveis de ambiente
-variaveis de sistema
-Path
-Novo
-C:\MinGW\bin
+## MinGW
 
-### Python
-python-3.12.0-amd64.exe
-check `Use admin privileges when installing py.exe` and `Add python.exe` to PATH
-install now
-close
+1. [Faça o download do instalador.](https://sourceforge.net/projects/mingw/)
+2. Durante a instalação, marque as opções `mingw32-base` e `mingw32-gcc-g++`.
+3. Complete a instalação e aplique as mudanças.
+4. Configure as variáveis de ambiente:
+   - Acesse as variáveis de sistema.
+   - Adicione o diretório `C:\MinGW\bin` ao Path.
 
-### JDK
-jdk-17_windows-x64_bin.exe
-variaveis de ambiente
-variaveis de sistema
-Path
-Novo
-C:\Program Files\Java\jdk-17\bin
-variaveis de sistema
-novo
-JAVA_HOME=C:\Program Files\Java\jdk-17
+## Python
+
+1. [Faça o download do instalador.](https://www.python.org/downloads/)
+2. Durante a instalação, marque as opções `Use admin privileges when installing py.exe` e `Add python.exe to PATH`.
+3. Prossiga com a instalação e feche o instalador.
+
+## JDK (Java Development Kit)
+
+1. [Faça o download do instalador.](https://www.oracle.com/br/java/technologies/downloads/)
+2. Configure as variáveis de ambiente:
+   - Adicione o diretório `C:\Program Files\Java\jdk-17\bin` ao caminho (Path).
+   - Crie uma nova variável de sistema chamada `JAVA_HOME` com o valor `C:\Program Files\Java\jdk-17`.
