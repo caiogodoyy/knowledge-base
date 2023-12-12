@@ -1,4 +1,4 @@
-# Guia de Instalação
+# Guia de Instalação (Windows)
 
 ## MinGW
 
@@ -21,3 +21,25 @@
 2. Configure as variáveis de ambiente:
    - Adicione o diretório `C:\Program Files\Java\jdk-17\bin` ao caminho (Path).
    - Crie uma nova variável de sistema chamada `JAVA_HOME` com o valor `C:\Program Files\Java\jdk-17`.
+
+# Configurando Múltiplas Contas do Git
+1. Crie `.gitconfig`:
+```
+[includeIf "gitdir:~/Worspace/Personal/"]
+path = ~/.gitconfig.personal
+[includeIf "gitdir:~/Workspace/Work/"]
+path = ~/.gitconfig.work
+```
+2. Crie `.gitconfig.work`:
+```
+[user]
+name = <your_username>
+email = <your_work_email>
+```
+3. Crie `.gitconfig.personal`:
+```
+[user]
+name = <your_username>
+email = <your_personal_email>
+```
+4. Por fim, inicialize o git (`git init`) nos diretórios: `~/Worspace/Personal/` e `~/Workspace/Work/`.
