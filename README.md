@@ -3,6 +3,7 @@
 
 # Summary
 - [How does the internet works?](#how-does-the-internet-works)
+- [What is HTTP?](#what-is-http)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
 - [Configurando Múltiplas Contas do Git](#configurando-multiplas-contas-git)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
@@ -21,6 +22,38 @@ There are two main concepts that are fundamental to the way the Internet functio
    There are protocols for sending packets between devices on the same network (Ethernet), for sending packets from network to network (IP), for ensuring those packets successfully arrive in order (TCP), and for formatting data for websites and applications (HTTP). In addition to these foundational protocols, there are also protocols for routing, testing, and encryption. And there are alternatives to the protocols listed above for different types of content — for instance, streaming video often uses UDP instead of TCP.
 
    Because all Internet-connected computers and other devices can interpret and understand these protocols, the Internet works no matter who or what connects to it.
+
+<a id="what-is-http"></a>
+## What is HTTP?
+The Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an application layer protocol designed to transfer information between networked devices and runs on top of other layers of the network protocol stack. A typical flow over HTTP involves a client machine making a request to a server, which then sends a response message.
+
+An HTTP request is the way Internet communications platforms such as web browsers ask for the information they need to load a website. Each HTTP request made across the Internet carries with it a series of encoded data that carries different types of information. A typical HTTP request contains:
+ 1. HTTP version type
+ 2. a URL
+ 3. an HTTP method
+ 4. HTTP request headers
+ 5. Optional HTTP body.
+
+An HTTP method, indicates the action that the HTTP request expects from the queried server. For example, two of the most common HTTP methods are ‘GET’ and ‘POST’.
+
+HTTP headers contain text information stored in key-value pairs, and they are included in every HTTP request (and response, more on that later). These headers communicate core information, such as what browser the client is using and what data is being requested.
+
+The body of a request is the part that contains the ‘body’ of information the request is transferring. The body of an HTTP request contains any information being submitted to the web server, such as a username and password, or any other data entered into a form.
+
+An HTTP response is what web clients (often browsers) receive from an Internet server in answer to an HTTP request. These responses communicate valuable information based on what was asked for in the HTTP request. A typical HTTP response contains:
+ 1. an HTTP status code
+ 2. HTTP response headers
+ 3. optional HTTP body
+
+[HTTP status](https://www.httpstatus.com.br/) codes are 3-digit codes most often used to indicate whether an HTTP request has been successfully completed. Status codes are broken into the following 5 blocks
+
+ 1. 1xx Informational
+ 2. 2xx Success
+ 3. 3xx Redirection
+ 4. 4xx Client Error
+ 5. 5xx Server Error
+
+Keep in mind that HTTP is a “stateless” protocol, which means that each command runs independent of any other command. In the original spec, HTTP requests each created and closed a TCP connection. In newer versions of the HTTP protocol (HTTP 1.1 and above), persistent connection allows for multiple HTTP requests to pass over a persistent TCP connection, improving resource consumption.
 
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
