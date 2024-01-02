@@ -4,6 +4,7 @@
 # Summary
 - [How does the internet works?](#how-does-the-internet-works)
 - [What is HTTP?](#what-is-http)
+- [DNS and how it works](#dns-and-how-it-works)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
 - [Configurando Múltiplas Contas do Git](#configurando-multiplas-contas-git)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
@@ -54,6 +55,20 @@ An HTTP response is what web clients (often browsers) receive from an Internet s
  5. 5xx Server Error
 
 Keep in mind that HTTP is a “stateless” protocol, which means that each command runs independent of any other command. In the original spec, HTTP requests each created and closed a TCP connection. In newer versions of the HTTP protocol (HTTP 1.1 and above), persistent connection allows for multiple HTTP requests to pass over a persistent TCP connection, improving resource consumption.
+
+<a id="dns-and-how-it-works"></a>
+## DNS and how it works
+The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.
+
+The process of DNS resolution involves converting a hostname (such as www.example.com) into a computer-friendly IP address (such as 192.168.1.1). An IP address is given to each device on the Internet, and that address is necessary to find the appropriate Internet device - like a street address is used to find a particular home. When a user wants to load a webpage, a translation must occur between what a user types into their web browser (example.com) and the machine-friendly address necessary to locate the example.com webpage.
+
+When users enter a domain name into the address bar of their web browser, they will be taken to the site they want to visit. However, this seemingly instant task consists of several steps known as the DNS lookup or DNS resolution process. Here’s an example of what the DNS resolution process is typically like to illustrate better how DNS works.
+
+ 1. You want to be taken to Exemple website, so you enter the domain name exemple.com into the web browser’s address bar. What you’re doing here is submitting a DNS request.
+ 2. Next, your computer will check whether it already stored a DNS entry of the domain you submitted locally. A DNS record is an IP address that matches the fully-qualified domain name.
+ 3. First, your computer will search its hosts file and cache. The hosts file is a plain text file that maps hostnames to IP addresses in an operating system, while the cache is temporary data stored by a hardware or software component.
+ 4. Matching IP addresses for the DNS service are commonly found in your browser cache or internet service provider (ISP) cache. However, if no matching IP address is found in your hosts file and cache, other additional steps will be added to the DNS resolution process.
+ 5. Since your computer couldn't find a match locally, the DNS resolution process involves querying various servers, including the recursive resolver, root name server, TLD name server, and authoritative name server, until the correct IP address is obtained. This information is then cached for future use, enabling your computer to establish a connection with the website's server and take you to your desired destination.
 
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
