@@ -5,8 +5,11 @@
 - [How does the internet works?](#how-does-the-internet-works)
 - [What is HTTP?](#what-is-http)
 - [DNS and how it works](#dns-and-how-it-works)
-- [Configuring multiple git accounts](#configuring-multiple-git-accounts)
-- [Operating System and how it works](#operating-system-and-how-it-works)
+- [Configuring multiple Git accounts](#configuring-multiple-git-accounts)
+- [How OSs work in General](#how-oss-work-in-general)
+- [Process Management](#process-management)
+- [Threads and Concurrency](#threads-and-concurrency)
+- [Memory Management](#memory-management)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
 
@@ -72,7 +75,7 @@ When users enter a domain name into the address bar of their web browser, they w
  5. Since your computer couldn't find a match locally, the DNS resolution process involves querying various servers, including the recursive resolver, root name server, TLD name server, and authoritative name server, until the correct IP address is obtained. This information is then cached for future use, enabling your computer to establish a connection with the website's server and take you to your desired destination.
 
 <a id="configuring-multiple-git-accounts"></a>
-## Configuring multiple git accounts
+## Configuring multiple Git accounts
 1. Create `.gitconfig`:
 ```
 [includeIf "gitdir:~/Worspace/Personal/"]
@@ -94,55 +97,82 @@ email = <your_personal_email>
 ```
 4. Finally, initialize Git (`git init`) in the directories: `~/Workspace/Personal/` and `~/Workspace/Work/`.
 
-<a id="operating-system-and-how-it-works"></a>
+<a id="how-oss-work-in-general"></a>
 ## Operating System and how it works
 An operating system (OS) is system software that hides hardware complexity, manages computer hardware and software resources, and provides common services for computer programs.
 
- 1. Processes and Process Management
+Most of the time, there are several different computer programs running at the same time, and they all need to access your computer’s central processing unit (CPU), memory and storage. The operating system coordinates all of this to make sure each program gets what it needs.
 
-    A process is basically a program in execution. To put it in simple terms, we write our computer programs in a text file, and when we execute this program, it becomes a process which performs all the tasks mentioned in the program.
+The kernel is a crucial component of an operating system. It serves as the core part responsible for managing the system's resources and acting as a bridge between the hardware and software layers. The kernel handles tasks like memory management, process scheduling, and device communication. In simpler terms, it acts as the operating system's brain, ensuring smooth and efficient interactions between software and hardware, contributing to the system's stability and functionality.
 
-    When a program is loaded into the memory and it becomes a process, it can be divided into four sections ─ stack, heap, text, and data.
-     - Stack: The process Stack contains the temporary data, such as method/function parameters, return address, and local variables. Think of it like a to-do list while playing a game. What tasks you need to complete, what items you have, and where you are in the game.
-     - Heap: This is dynamically allocated memory to a process during its run time. This is like a flexible backpack. As you play, you might pick up new tools or items. The heap is where the game process stores these things.
-     - Text: This includes the Program Counter (a pointer to the address of the next instruction to be executed for this process) and the contents of the processor’s registers. This is the actual game being played. What's happening right now, where your character is, and all the ongoing actions.
-     - Data: This section contains the global and static variables. Here's where the game keeps track of everything it needs to remember—your score, the level you're on, and any other important info.
+ - Differences between Windows and Unix
 
-    When a process executes, it passes through different states. In general, a process can have one of the following five states at a time:
-     - Start: The initial state when a process is first started/created.
-     - Ready: The process is waiting to be assigned to a processor. Ready processes are waiting to have the processor allocated to them by the operating system so that they can run. A process may come into this state after the Start state, or while running it by but getting interrupted by the scheduler to assign CPU to some other process.
-     - Running: Once the process has been assigned to a processor by the OS scheduler, the process state is set to running and the processor executes its instructions.
-     - Waiting: the process moves into the waiting state if it needs to wait for a resource, such as waiting for user input, or waiting for a file to become available.
-     - Terminated or Exit: Once the process finishes its execution, or it is terminated by the operating system, it is moved to the terminated state where it waits to be removed from main memory.
+   While both Windows and Unix-based operating systems share common goals, they diverge significantly in their architectures and user philosophies.
+   
+    1. User Interface:
+       - Windows: Renowned for its user-friendly graphical interface, Windows dominates the desktop environment. The graphical user interface (GUI) simplifies interactions for everyday users.
+       - Unix: Traditionally, Unix systems favor a command-line interface, appealing to users comfortable with text-based commands. However, many Unix variants now incorporate graphical interfaces for broader accessibility.
+   
+    2. System Architecture:
+       - Windows: Closed-source and designed for compatibility across a wide range of hardware. Windows is commonly associated with proprietary systems and applications.
+       - Unix: Open-source and known for its scalability and stability. Unix variants, like Linux, are prevalent in server environments and among developers.
+   
+    3. Security and Permissions:
+       - Windows: Utilizes access control lists (ACLs) for permissions, allowing for granular control over files and resources.
+       - Unix: Employs a robust file permission model, utilizing a combination of owner, group, and other categories for access control.
+   
+    4. Networking:
+       - Windows: Often favored in corporate environments for seamless integration with Microsoft networking technologies.
+       - Unix: Renowned for its networking capabilities, Unix-based systems excel in server configurations and high-performance computing environments.
+   
+   In essence, while Windows excels in user-friendly interfaces and broad application compatibility, Unix-based systems offer robustness, customization, and are widely embraced in server and developer-centric environments. Understanding these distinctions is crucial in selecting the operating system that aligns with specific needs and preferences.
 
- 2. Threads and Scheduling
+<a id="process-management"></a>
+## Process Management
 
-    A thread is a flow of execution through the process code. It has its own program counter that keeps track of which instruction to execute next.
+A process is basically a program in execution. To put it in simple terms, we write our computer programs in a text file, and when we execute this program, it becomes a process which performs all the tasks mentioned in the program.
 
-    A thread shares with its peer threads various information like code segment, data segment, and open files. When one thread alters a code segment memory item, all other threads see that.
+When a program is loaded into the memory and it becomes a process, it can be divided into four sections ─ stack, heap, text, and data
+ - Stack: The process Stack contains the temporary data, such as method/function parameters, return address, and local variables. Think of it like a to-do list while playing a game. What tasks you need to complete, what items you have, and where you are in the game.
+ - Heap: This is dynamically allocated memory to a process during its run time. This is like a flexible backpack. As you play, you might pick up new tools or items. The heap is where the game process stores these things.
+ - Text: This includes the Program Counter (a pointer to the address of the next instruction to be executed for this process) and the contents of the processor’s registers. This is the actual game being played. What's happening right now, where your character is, and all the ongoing actions.
+ - Data: This section contains the global and static variables. Here's where the game keeps track of everything it needs to remember—your score, the level you're on, and any other important info
 
-    Threads provide a way to improve application performance through parallelism. Threads represent a software approach to improving the performance of operating systems by reducing the overhead.
+When a process executes, it passes through different states. In general, a process can have one of the following five states at a time:
+ - Start: The initial state when a process is first started/created.
+ - Ready: The process is waiting to be assigned to a processor. Ready processes are waiting to have the processor allocated to them by the operating system so that they can run. A process may come into this state after the Start state, or while running it by but getting interrupted by the scheduler to assign CPU to some other process.
+ - Running: Once the process has been assigned to a processor by the OS scheduler, the process state is set to running and the processor executes its instructions.
+ - Waiting: the process moves into the waiting state if it needs to wait for a resource, such as waiting for user input, or waiting for a file to become available.
+ - Terminated or Exit: Once the process finishes its execution, or it is terminated by the operating system, it is moved to the terminated state where it waits to be removed from main memory.
 
-    The process of scheduling is the responsibility of the process manager that handles the removal of the running process from the CPU and the selection of another process on the basis of a particular strategy.
+<a id="threads-and-concurrency"></a>
+## Threads and Concurrency
 
-    The Operating System maintains the following important process scheduling queues:
-    - Job queue: This queue keeps all the processes in the system.
-    - Ready queue: This queue keeps a set of all processes residing in the main memory, ready and waiting to execute. A new process is always put in this queue.
-    - Device queues: The processes which are blocked due to unavailability of an I/O device constitute this queue.
+A thread is a flow of execution through the process code. It has its own program counter that keeps track of which instruction to execute next.
 
-    The OS can use different policies to manage each queue (FIFO, Round Robin, Priority, etc.).
+A thread shares with its peer threads various information like code segment, data segment, and open files. When one thread alters a code segment memory item, all other threads see that.
 
- 3. Memory Management
+Threads provide a way to improve application performance through parallelism. Threads represent a software approach to improving the performance of operating systems by reducing the overhead.
 
-    Memory management is the functionality of an operating system which handles or manages primary memory.
+The process of scheduling is the responsibility of the process manager that handles the removal of the running process from the CPU and the selection of another process on the basis of a particular strategy.
 
-    Memory management keeps track of each and every memory location, regardless of whether it is allocated to some process or free. It checks how much memory is to be allocated to processes. It decides which process will get memory at what time. And it tracks whenever memory gets freed up or unallocated, and correspondingly updates the status.
+The Operating System maintains the following important process scheduling queues:
+ - Job queue: This queue keeps all the processes in the system.
+ - Ready queue: This queue keeps a set of all processes residing in the main memory, ready and waiting to execute. A new process is always put in this queue.
+ - Device queues: The processes which are blocked due to unavailability of an I/O device constitute this queue.
 
-    - Logical Addresses:
-      Think of these like virtual addresses. When a program runs, the CPU uses logical addresses to access memory. Each program believes it has the whole memory to itself, creating a conceptual view. It's like giving every program its own set of directions, and they don't know about each other.
+The OS can use different policies to manage each queue (FIFO, Round Robin, Priority, etc.).
 
-    - Physical Addresses:
-      Now, these are the real, physical locations in the computer's memory hardware. The operating system takes those virtual (logical) addresses and translates them into actual places in the computer's memory. It's like having a guide (the OS) that takes each program's directions and turns them into the real-world locations where data is stored.
+<a id="memory-management"></a>
+## Memory Management
+
+Memory management is the functionality of an operating system which handles or manages primary memory.
+
+Memory management keeps track of each and every memory location, regardless of whether it is allocated to some process or free. It checks how much memory is to be allocated to processes. It decides which process will get memory at what time. And it tracks whenever memory gets freed up or unallocated, and correspondingly updates the status.
+ - Logical Addresses:
+   Think of these like virtual addresses. When a program runs, the CPU uses logical addresses to access memory. Each program believes it has the whole memory to itself, creating a conceptual view. It's like giving every program its own set of directions, and they don't know about each other.
+ - Physical Addresses:
+   Now, these are the real, physical locations in the computer's memory hardware. The operating system takes those virtual (logical) addresses and translates them into actual places in the computer's memory. It's like having a guide (the OS) that takes each program's directions and turns them into the real-world locations where data is stored.
 
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
