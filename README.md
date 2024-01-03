@@ -5,7 +5,8 @@
 - [How does the internet works?](#how-does-the-internet-works)
 - [What is HTTP?](#what-is-http)
 - [DNS and how it works](#dns-and-how-it-works)
-- [Configuring Multiple Git Accounts](#configuring-multiple-git-accounts)
+- [Configuring multiple git accounts](#configuring-multiple-git-accounts)
+- [What is an Operating System?](#what-is-an-operating-system)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
 
@@ -71,7 +72,7 @@ When users enter a domain name into the address bar of their web browser, they w
  5. Since your computer couldn't find a match locally, the DNS resolution process involves querying various servers, including the recursive resolver, root name server, TLD name server, and authoritative name server, until the correct IP address is obtained. This information is then cached for future use, enabling your computer to establish a connection with the website's server and take you to your desired destination.
 
 <a id="configuring-multiple-git-accounts"></a>
-## Configuring Multiple Git Accounts
+## Configuring multiple git accounts
 1. Create `.gitconfig`:
 ```
 [includeIf "gitdir:~/Worspace/Personal/"]
@@ -92,6 +93,30 @@ name = <your_username>
 email = <your_personal_email>
 ```
 4. Finally, initialize Git (`git init`) in the directories: `~/Workspace/Personal/` and `~/Workspace/Work/`.
+
+<a id="what-is-an-operating-system"></a>
+## What is an Operating System?
+An operating system (OS) is system software that hides hardware complexity, manages computer hardware and software resources, and provides common services for computer programs.
+
+ 1. Processes and Process Management
+
+    A process is basically a program in execution. To put it in simple terms, we write our computer programs in a text file, and when we execute this program, it becomes a process which performs all the tasks mentioned in the program.
+
+    When a program is loaded into the memory and it becomes a process, it can be divided into four sections ─ stack, heap, text, and data.
+     - Stack: The process Stack contains the temporary data, such as method/function parameters, return address, and local variables. Think of it like a to-do list while playing a game. What tasks you need to complete, what items you have, and where you are in the game.
+     - Heap: This is dynamically allocated memory to a process during its run time. This is like a flexible backpack. As you play, you might pick up new tools or items. The heap is where the game process stores these things.
+     - Text: This includes the Program Counter (a pointer to the address of the next instruction to be executed for this process) and the contents of the processor’s registers. This is the actual game being played. What's happening right now, where your character is, and all the ongoing actions.
+     - Data: This section contains the global and static variables. Here's where the game keeps track of everything it needs to remember—your score, the level you're on, and any other important info.
+
+    When a process executes, it passes through different states. In general, a process can have one of the following five states at a time:
+     - Start: The initial state when a process is first started/created.
+     - Ready: The process is waiting to be assigned to a processor. Ready processes are waiting to have the processor allocated to them by the operating system so that they can run. A process may come into this state after the Start state, or while running it by but getting interrupted by the scheduler to assign CPU to some other process.
+     - Running: Once the process has been assigned to a processor by the OS scheduler, the process state is set to running and the processor executes its instructions.
+     - Waiting: the process moves into the waiting state if it needs to wait for a resource, such as waiting for user input, or waiting for a file to become available.
+     - Terminated or Exit: Once the process finishes its execution, or it is terminated by the operating system, it is moved to the terminated state where it waits to be removed from main memory.
+
+ 2. Threads and Concurrency
+    
 
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
