@@ -10,6 +10,7 @@
 - [Process Management](#process-management)
 - [Threads and Concurrency](#threads-and-concurrency)
 - [Memory Management](#memory-management)
+- [Basic Terminal Commands](#basic-terminal-commands)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
 
@@ -173,6 +174,160 @@ Memory management keeps track of each and every memory location, regardless of w
    Think of these like virtual addresses. When a program runs, the CPU uses logical addresses to access memory. Each program believes it has the whole memory to itself, creating a conceptual view. It's like giving every program its own set of directions, and they don't know about each other.
  - Physical Addresses:
    Now, these are the real, physical locations in the computer's memory hardware. The operating system takes those virtual (logical) addresses and translates them into actual places in the computer's memory. It's like having a guide (the OS) that takes each program's directions and turns them into the real-world locations where data is stored.
+
+
+<a id="basic-terminal-commands"></a>
+## Basic Terminal Commands
+
+- Key Commands & Navigation
+  
+  Before we look at some common commands, I just want to note a few keyboard commands that are very helpful:
+  
+  - `Up Arrow`: Will show your last command
+  - `Down Arrow`: Will show your next command
+  - `Tab`: Will auto-complete your command
+  - `Ctrl + L`: Will clear the screen
+  - `Ctrl + C`: Will cancel a command
+  - `Ctrl + R`: Will search for a command
+  - `Ctrl + D`: Will exit the terminal
+
+- File System Navigation
+  
+  Commands to navigate your file system are very important. You will be using them all the time. You won't remember every single command that you use, but these are the ones that you should remember.
+  
+  | Command               | Description                                                                       |
+  | --------------------- | --------------------------------------------------------------------------------- |
+  | pwd                   | Lists the path to the working directory                                           |
+  | ls                    | List directory contents                                                           |
+  | ls -a                 | List contents including hidden files (Files that begin with a dot)                |
+  | ls -l                 | List contents with more info including permissions (long listing)                 |
+  | ls -r                 | List contents reverse order                                                       |
+  | cd                    | Change directory to home                                                          |
+  | cd [dirname]          | Change directory to specific directory                                            |
+  | cd ~                  | Change to home directory                                                          |
+  | cd ..                 | Change to parent directory                                                        |
+  | cd -                  | Change to previous directory (which could be different than the parent of course) |
+  | find -name [filename] | Find location of a program                                                        |
+  
+  Of course, you can group flags together. For example, if I want to see more info and view hidden files, I could do `ls -l -a` and even shorten it to `ls -la`.
+
+- Modifying Files & Directories
+
+  | Command                                            | Description                               |
+  | -------------------------------------------------- | ----------------------------------------- |
+  | mkdir [dirname]                                    | Make directory                            |
+  | touch [filename]                                   | Create file                               |
+  | rm [filename]                                      | Remove file                               |
+  | rm -r [dirname]                                    | Remove directory                          |
+  | rm -rf [dirname]                                   | Remove directory with contents            |
+  | rm ./\*                                            | Remove everything in the current folder   |
+  | cp [filename] [dirname]                            | Copy file                                 |
+  | mv [filename] [dirname]                            | Move file                                 |
+  | mv [dirname] [dirname]                             | Move directory                            |
+  | mv [filename] [filename]                           | Rename file or folder                     |
+
+- The `sudo` Command
+
+  The sudo command allows a permitted user to execute a command as the superuser or another user.
+
+  ```bash
+  sudo [command]
+  ```
+
+- Right angle bracket `>`
+
+  This symbol tells the system to output results into whatever you specify next. The target is usually a filename. You can use this symbol by itself to create a new file:
+  
+  ```bash
+  > [filename]
+  ```
+
+- The `cat` (concatenate) Command
+
+  The cat command is a very common command and allows you to create single or multiple files, view content of a file, concatenate files and redirect output in terminal or files.
+  
+  Display the contents of a file:
+  
+  ```bash
+    cat [filename]
+  ```
+  
+  Create a file using the `cat` command:
+  
+  ```bash
+    cat > [filename]
+  ```
+  
+  This will open up a new file and you can start typing.
+  
+  You can also append to a file:
+  
+  ```bash
+    cat >> [filename]
+  ```
+  
+  You can use it to show line numbers:
+  
+  ```bash
+    cat -n [filename]
+  ```
+
+- The `echo` Command
+
+  The `echo` command is used to display messages, or to create and write to files. It is similar to the `cat` command, but it is used to display a single line of text.
+
+  Print "Hello World"
+  
+  ```bash
+    echo "Hello World"
+  ```
+  
+  You can also use it to create a file:
+  
+  ```bash
+    echo "Hello World" > [filename]
+  ```
+  
+  You can also append to a file:
+  
+  ```bash
+    echo "Hello World" >> [filename]
+  ```
+
+- The `grep` Command
+
+  The `grep` command is used to search for a text pattern in a file. It is very powerful and can be used to search for a string or regular expression in a file or set of files.
+  
+  ```bash
+    grep [searchterm] [filename]
+  ```
+  
+  You can also search for a file using `|` pipe. This symbol takes the output (list of files and directories) from the ls command and sends it as input to the next command.
+  
+  ```bash
+    ls | grep [searchterm]
+  ```
+
+- The `chmod` (Change Mode) Command:
+  
+  This command is used to change the permissions of a file or directory.
+
+  ```bash
+    chmod [permissions] [filename/directory]
+  ```
+
+  The three main permissions are:
+  1. Read (r): Allows viewing the content of a file or listing the contents of a directory. To add this permission, you would use `chmod +r [filename]`, and to remove it, `chmod -r [filename]`.
+  2. Write (w): Permits the modification of a file's content or the creation, removal, and renaming of files in a directory. To add this permission, you would use `chmod +w [filename]`, and to remove it, `chmod -w [filename]`.
+  3. Execute (x): For files, allows the execution of the file as a program or script. For directories, permits entering the directory and accessing its contents. To add this permission, you would use `chmod +x [filename]`, and to remove it, `chmod -x [filename]`.
+
+- The `wget` Command
+
+  This command is used for downloading files from the web.
+
+  ```bash
+  wget [URL]
+  ```
 
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
