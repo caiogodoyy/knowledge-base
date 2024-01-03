@@ -6,7 +6,7 @@
 - [What is HTTP?](#what-is-http)
 - [DNS and how it works](#dns-and-how-it-works)
 - [Configuring multiple git accounts](#configuring-multiple-git-accounts)
-- [What is an Operating System?](#what-is-an-operating-system)
+- [Operating System and how it works](#operating-system-and-how-it-works)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
 
@@ -94,8 +94,8 @@ email = <your_personal_email>
 ```
 4. Finally, initialize Git (`git init`) in the directories: `~/Workspace/Personal/` and `~/Workspace/Work/`.
 
-<a id="what-is-an-operating-system"></a>
-## What is an Operating System?
+<a id="operating-system-and-how-it-works"></a>
+## Operating System and how it works
 An operating system (OS) is system software that hides hardware complexity, manages computer hardware and software resources, and provides common services for computer programs.
 
  1. Processes and Process Management
@@ -115,8 +115,34 @@ An operating system (OS) is system software that hides hardware complexity, mana
      - Waiting: the process moves into the waiting state if it needs to wait for a resource, such as waiting for user input, or waiting for a file to become available.
      - Terminated or Exit: Once the process finishes its execution, or it is terminated by the operating system, it is moved to the terminated state where it waits to be removed from main memory.
 
- 2. Threads and Concurrency
-    
+ 2. Threads and Scheduling
+
+    A thread is a flow of execution through the process code. It has its own program counter that keeps track of which instruction to execute next.
+
+    A thread shares with its peer threads various information like code segment, data segment, and open files. When one thread alters a code segment memory item, all other threads see that.
+
+    Threads provide a way to improve application performance through parallelism. Threads represent a software approach to improving the performance of operating systems by reducing the overhead.
+
+    The process of scheduling is the responsibility of the process manager that handles the removal of the running process from the CPU and the selection of another process on the basis of a particular strategy.
+
+    The Operating System maintains the following important process scheduling queues:
+    - Job queue: This queue keeps all the processes in the system.
+    - Ready queue: This queue keeps a set of all processes residing in the main memory, ready and waiting to execute. A new process is always put in this queue.
+    - Device queues: The processes which are blocked due to unavailability of an I/O device constitute this queue.
+
+    The OS can use different policies to manage each queue (FIFO, Round Robin, Priority, etc.).
+
+ 3. Memory Management
+
+    Memory management is the functionality of an operating system which handles or manages primary memory.
+
+    Memory management keeps track of each and every memory location, regardless of whether it is allocated to some process or free. It checks how much memory is to be allocated to processes. It decides which process will get memory at what time. And it tracks whenever memory gets freed up or unallocated, and correspondingly updates the status.
+
+    - Logical Addresses:
+      Think of these like virtual addresses. When a program runs, the CPU uses logical addresses to access memory. Each program believes it has the whole memory to itself, creating a conceptual view. It's like giving every program its own set of directions, and they don't know about each other.
+
+    - Physical Addresses:
+      Now, these are the real, physical locations in the computer's memory hardware. The operating system takes those virtual (logical) addresses and translates them into actual places in the computer's memory. It's like having a guide (the OS) that takes each program's directions and turns them into the real-world locations where data is stored.
 
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
