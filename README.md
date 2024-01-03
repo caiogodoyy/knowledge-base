@@ -5,8 +5,8 @@
 - [How does the internet works?](#how-does-the-internet-works)
 - [What is HTTP?](#what-is-http)
 - [DNS and how it works](#dns-and-how-it-works)
+- [Configuring Multiple Git Accounts](#configuring-multiple-git-accounts)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
-- [Configurando Múltiplas Contas do Git](#configurando-multiplas-contas-git)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
 
 <a id="#how-does-the-internet-works"></a>
@@ -70,6 +70,29 @@ When users enter a domain name into the address bar of their web browser, they w
  4. Matching IP addresses for the DNS service are commonly found in your browser cache or internet service provider (ISP) cache. However, if no matching IP address is found in your hosts file and cache, other additional steps will be added to the DNS resolution process.
  5. Since your computer couldn't find a match locally, the DNS resolution process involves querying various servers, including the recursive resolver, root name server, TLD name server, and authoritative name server, until the correct IP address is obtained. This information is then cached for future use, enabling your computer to establish a connection with the website's server and take you to your desired destination.
 
+<a id="configuring-multiple-git-accounts"></a>
+## Configuring Multiple Git Accounts
+1. Create `.gitconfig`:
+```
+[includeIf "gitdir:~/Worspace/Personal/"]
+path = ~/.gitconfig.personal
+[includeIf "gitdir:~/Workspace/Work/"]
+path = ~/.gitconfig.work
+```
+2. Create `.gitconfig.work`:
+```
+[user]
+name = <your_username>
+email = <your_work_email>
+```
+3. Create `.gitconfig.personal`:
+```
+[user]
+name = <your_username>
+email = <your_personal_email>
+```
+4. Finally, initialize Git (`git init`) in the directories: `~/Workspace/Personal/` and `~/Workspace/Work/`.
+
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
 ### MinGW
@@ -88,29 +111,6 @@ When users enter a domain name into the address bar of their web browser, they w
 2. Configure as variáveis de ambiente:
    - Adicione o diretório `C:\Program Files\Java\jdk-17\bin` ao caminho (Path).
    - Crie uma nova variável de sistema chamada `JAVA_HOME` com o valor `C:\Program Files\Java\jdk-17`.
-
-<a id="configurando-multiplas-contas-git"></a>
-## Configurando Múltiplas Contas do Git
-1. Crie `.gitconfig`:
-```
-[includeIf "gitdir:~/Worspace/Personal/"]
-path = ~/.gitconfig.personal
-[includeIf "gitdir:~/Workspace/Work/"]
-path = ~/.gitconfig.work
-```
-2. Crie `.gitconfig.work`:
-```
-[user]
-name = <your_username>
-email = <your_work_email>
-```
-3. Crie `.gitconfig.personal`:
-```
-[user]
-name = <your_username>
-email = <your_personal_email>
-```
-4. Por fim, inicialize o git (`git init`) nos diretórios: `~/Worspace/Personal/` e `~/Workspace/Work/`.
 
 <a id="guia-instalacao-docker-linux"></a>
 ## Guia de Instalação do Docker (Linux)
