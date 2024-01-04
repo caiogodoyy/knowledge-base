@@ -346,15 +346,15 @@ Structured Query Language (SQL) is the standard programming language for interac
 
 This query retrieves specific columns (column1 and column2) from the table named table_name. It allows you to fetch and view only the data you're interested in, making your queries more focused and efficient.
 
-´´´sql
+```sql
 SELECT column1, column2 FROM table_name;
-´´´
+```
 
 This query, on the other hand, selects all columns (* denotes all) from the table named table_name. It's a handy way to retrieve complete rows of data, giving you a comprehensive view of the information stored in that particular table.
 
-´´´sql
+```sql
 SELECT * FROM table_name;
-´´´
+```
 
 The efficiency of a query in a relational database is crucial for optimizing performance and ensuring timely access to data. Crafting efficient queries not only enhances the speed of data retrieval but also plays a significant role in resource utilization. One strategy to improve query efficiency is to carefully design and structure your database, considering factors such as creating new columns.
 
