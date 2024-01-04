@@ -11,6 +11,7 @@
 - [Threads and Concurrency](#threads-and-concurrency)
 - [Memory Management](#memory-management)
 - [Basic Terminal Commands](#basic-terminal-commands)
+- [Relational Databases](#relational-databases)
 - [Guia de Instalação de Linguagens (Windows)](#guia-instalacao-linguagens-windows)
 - [Guia de Instalação do Docker (Linux)](#guia-instalacao-docker-linux)
 
@@ -130,7 +131,6 @@ The kernel is a crucial component of an operating system. It serves as the core 
 
 <a id="process-management"></a>
 ## Process Management
-
 A process is basically a program in execution. To put it in simple terms, we write our computer programs in a text file, and when we execute this program, it becomes a process which performs all the tasks mentioned in the program.
 
 When a program is loaded into the memory and it becomes a process, it can be divided into four sections ─ stack, heap, text, and data
@@ -148,7 +148,6 @@ When a process executes, it passes through different states. In general, a proce
 
 <a id="threads-and-concurrency"></a>
 ## Threads and Concurrency
-
 A thread is a flow of execution through the process code. It has its own program counter that keeps track of which instruction to execute next.
 
 A thread shares with its peer threads various information like code segment, data segment, and open files. When one thread alters a code segment memory item, all other threads see that.
@@ -178,7 +177,6 @@ Memory management keeps track of each and every memory location, regardless of w
 
 <a id="basic-terminal-commands"></a>
 ## Basic Terminal Commands
-
 - Key Commands & Navigation
   
   Before we look at some common commands, I just want to note a few keyboard commands that are very helpful:
@@ -328,6 +326,43 @@ Memory management keeps track of each and every memory location, regardless of w
   ```bash
   wget [URL]
   ```
+
+<a id="relational-databases"></a>
+## Relational Databases
+A relational database organizes data into rows and columns, which collectively form a table. Data is typically structured across multiple tables, which can be joined together via a primary key or a foreign key. These unique identifiers demonstrate the different relationships which exist between tables, and these relationships are usually illustrated through different types of data models. Analysts use SQL queries to combine different data points and summarize business performance, allowing organizations to gain insights, optimize workflows, and identify new opportunities.
+
+Structured Query Language (SQL) is the standard programming language for interacting with relational database management systems, allowing database administrator to add, update, or delete rows of data easily. Some of The Most Important SQL Commands are:
+- SELECT - extracts data from a database
+- UPDATE - updates data in a database
+- DELETE - deletes data from a database
+- INSERT INTO - inserts new data into a database
+- CREATE DATABASE - creates a new database
+- ALTER DATABASE - modifies a database
+- CREATE TABLE - creates a new table
+- ALTER TABLE - modifies a table
+- DROP TABLE - deletes a table
+- CREATE INDEX - creates an index (search key)
+- DROP INDEX - deletes an index
+
+This query retrieves specific columns (column1 and column2) from the table named table_name. It allows you to fetch and view only the data you're interested in, making your queries more focused and efficient.
+
+´´´sql
+SELECT column1, column2 FROM table_name;
+´´´
+
+This query, on the other hand, selects all columns (* denotes all) from the table named table_name. It's a handy way to retrieve complete rows of data, giving you a comprehensive view of the information stored in that particular table.
+
+´´´sql
+SELECT * FROM table_name;
+´´´
+
+The efficiency of a query in a relational database is crucial for optimizing performance and ensuring timely access to data. Crafting efficient queries not only enhances the speed of data retrieval but also plays a significant role in resource utilization. One strategy to improve query efficiency is to carefully design and structure your database, considering factors such as creating new columns.
+
+Adding new columns to a table can indeed contribute to the efficiency of queries. While it increases storage requirements, the trade-off is often justified. Retrieving precomputed or aggregated values from additional columns is faster than performing complex calculations on the fly during query execution. In a world where processing power comes at a premium, saving on computational resources can result in considerable cost savings.
+
+Moreover, the use of indexes is paramount in optimizing query performance. Indexes are data structures that provide a quick lookup mechanism, functioning much like the index of a book. By creating indexes on columns frequently used in search conditions or join operations, the database engine can swiftly locate the relevant rows without scanning the entire table. This dramatically reduces the time required for query execution.
+
+In essence, the quest for efficient queries involves a thoughtful balance between storage and processing considerations. Creating well-structured databases, incorporating new columns strategically, and leveraging indexes are integral steps in achieving optimal performance and cost-effectiveness in a relational database environment.
 
 <a id="guia-instalacao-linguagens-windows"></a>
 ## Guia de Instalação de Linguagens (Windows)
